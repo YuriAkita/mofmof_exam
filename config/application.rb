@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module MofmofExam
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
     config.generators do |g|
