@@ -6,14 +6,16 @@ class BuildingsController < ApplicationController
   end
 
   def show
+    @station_infos = @building.station_infos
   end
 
   def new
     @building = Building.new
-    @building.station_infos.build
+    2.times { @building.station_infos.build }
   end
 
   def edit
+    @building.station_infos.build
   end
 
   def create
@@ -56,6 +58,6 @@ class BuildingsController < ApplicationController
     end
 
     def building_params
-      params.require(:building).permit(:building_name, :price, :address, :building_age, :info, station_infos_attributes: [:station_route, :closest_station_name, :walk_time])
+      params.require(:building).permit(:building_name, :price, :address, :building_age, :info, station_infos_attributes: [:id, :station_route, :closest_station_name, :walk_time])
     end
 end
