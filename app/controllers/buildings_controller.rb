@@ -20,7 +20,6 @@ class BuildingsController < ApplicationController
 
   def create
     @building = Building.new(building_params)
-
     respond_to do |format|
       if @building.save
         format.html { redirect_to @building, notice: "Building was successfully created." }
@@ -58,6 +57,18 @@ class BuildingsController < ApplicationController
     end
 
     def building_params
-      params.require(:building).permit(:building_name, :price, :address, :building_age, :info, station_infos_attributes: [:id, :station_route, :closest_station_name, :walk_time])
+      params.require(:building).permit(
+        :building_name,
+        :price,
+        :address,
+        :building_age,
+        :info,
+        station_infos_attributes: [
+          :id,
+          :station_route,
+          :closest_station_name,
+          :walk_time,
+          :building_id
+        ])
     end
 end
